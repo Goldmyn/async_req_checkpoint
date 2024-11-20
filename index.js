@@ -14,10 +14,11 @@ iterateWithAsyncAwait(["ace", "of", "spade", "drink"]);
 async function awaitCall() {
   try {
     // Make request with axios here
-    const response = await axios.get(
+    const response = await fetch(
       "http://www.omdbapi.com/?apikey=146cca5d&t=superman&type=movie"
     );
-    console.log(response.data);
+    const data = await response.json();
+    console.log(data);
   } catch (error) {
     console.log(error);
     console.log("Sorry, an error occurred");
@@ -29,17 +30,17 @@ awaitCall();
 // Task 03: Handling Errors with Async/Await
 async function awaitCall() {
   try {
-    const response = await axios.get(
+    const response = await fetch(
       "http://www.omdbapi.com/?apikey=146cca5d&t=superman&type=movie"
     );
-    console.log(response.data);
+    const data = await response.json();
+    console.log(data);
   } catch (error) {
     console.log("Error: ", error.message);
     console.log("Sorry, an error occurred while fetching the movie details");
   }
 }
 
-// Example usage:
 awaitCall();
 
 // Task 04: Awaiting Concurrent Requests
